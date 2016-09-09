@@ -6,32 +6,29 @@ url = require('url');
 
 app.get('/', function(req, res){
 	var renderFunc = jade.compileFile('./template_index.jade');
-	var data = {
-		pagetitle: 'Index',
-		applicationname: 'Jade Sample Template',
-		username: 'Sample User',
-		articles: [{
-			title: 'lorem ispum',
-			subtitle: 'sub',
-			content: 'some shit',
-			author: 'article author'
-		}, {
-			title: 'lorem ispum',
-			subtitle: 'sub',
-			content: 'some shit',
-			author: 'article author'
-		}],
-		owner: 'Tushar Agarwal'
-	};
-	var html = renderFunc(data);
-	res.writeHead("200", {"content-type": "text/html"});
-	res.write(html);
-	res.end();
+	var content = '';
+	fs.readFile('./data.json', 'utf-8', function(err, data){
+		content = JSON.parse(data);
+		data = content.index;
+		var html = renderFunc(data);
+		res.writeHead("200", {"content-type": "text/html"});
+		res.write(html);
+		res.end();
+	});
+	
 });
 
 app.get('/login', function(req, res){
-	var renderFunc = jade.compileFile('./index.jade');
-	var html = renderFunc({pageTitle: 'login', url:"/logout", isActive: true, isChecked: false});
+	var renderFunc = jade.compileFile('./template_index.jade');
+	var content = '';
+	fs.readFile('./data.json', 'utf-8', function(err, data){
+		content = JSON.parse(data);
+		data = content.login;
+		var html = renderFunc(data);
+		res.writeHead("200", {"content-type": "text/html"});
+		res.write(html);
+		res.end();
+	});
 	// can also be written as 
 	// fs.readFile('./index.jade',function(err, sourse){
 	// var html = jade.render(source, {pageTitle:'login', and other data});});
@@ -42,9 +39,6 @@ app.get('/login', function(req, res){
 	// or
 	// jade.renderFile('./index.jade', data, function(err, html){
 	// console.log(html);});
-	res.writeHead("200", {"content-type": "text/html"});
-	res.write(html);
-	res.end();
 });
 
 app.get('*', function(req, res) {

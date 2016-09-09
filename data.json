@@ -1,0 +1,28 @@
+{"index": {
+	"pagetitle": "Index",
+	"applicationname": "Jade Sample Template",
+	"username": "Sample User",
+	"articles": [{
+		"title": "lorem ispum",
+		"subtitle": "sub",
+		"content": "some shit",
+		"author": "article author"
+	}, {
+		"title": "lorem ispum",
+		"subtitle": "sub",
+		"content": "some shit",
+		"author": "article author"
+	}],
+	"owner": "Tushar Agarwal"},
+"login": {
+	"pagetitle": "Login",
+	"applicationname": "Jade Sample Template",
+	"username": "",
+	"articles": [{
+		"title": "Login",
+		"subtitle": "",
+		"content": "<input type='text' placeholder='Username'>",
+		"author": ""
+	}],
+	"owner": ""
+}}
