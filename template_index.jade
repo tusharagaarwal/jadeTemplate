@@ -6,6 +6,7 @@ html
 		meta(name="author", value="tusharagaarwal@gmail.com")
 		title= pagetitle
 		link(rel="stylesheet", href="./style.css", type="text/css")
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
 		
 	body
 		div#big_wrapper
@@ -29,7 +30,7 @@ html
 							hgroup
 								h1= article.title
 								h2= article.subtitle
-							p= article.content
+							p!= article.content
 							footer= article.author
 				aside#side_menu
 					ul
