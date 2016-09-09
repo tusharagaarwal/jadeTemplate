@@ -1,0 +1,42 @@
+doctype html
+html
+	head
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(name="encoding", value="utf-8")
+		meta(name="author", value="tusharagaarwal@gmail.com")
+		title= pagetitle
+		link(rel="stylesheet", href="./style.css", type="text/css")
+		
+	body
+		div#big_wrapper
+			header#top_header
+				h1= applicationname
+			nav#top_menu
+				ul
+					li(class="active")
+						a(href="./", title="Home") Home
+					li
+						a(href="./about", title="About") About Us
+					li
+						a(href="./contact", title="Contact") Contact
+				div#welcomemsg
+					| Welcome #{username}
+			div#main_container
+				// insert bread crumbs
+				div#main_section
+					each article in articles
+						article
+							hgroup
+								h1= article.title
+								h2= article.subtitle
+							p= article.content
+							footer= article.author
+				aside#side_menu
+					ul
+						li(class="active")
+							a(href='./', title="home") Home
+						li
+							a(href="./about", title="About") About Us
+						li
+							a(href="./contact", title="Contact") Contact
+			footer#page_footer Copyright 2016 - #{owner} &copy;
