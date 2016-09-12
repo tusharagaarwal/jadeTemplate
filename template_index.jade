@@ -1,14 +1,13 @@
 doctype html
 html
 	head
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(name="viewport", content="width=device-width, height=device-height, initial-scale=1.0")
 		meta(name="encoding", value="utf-8")
 		meta(name="author", value="tusharagaarwal@gmail.com")
 		title= pagetitle
 		link(rel="stylesheet", href="/html_content/style.css", type="text/css")
 		link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
 		link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1", crossorigin="anonymous")
-		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
 	body
 		div#big_wrapper
 			header#top_header
@@ -22,9 +21,18 @@ html
 					li
 						a(href="./contact", title="Contact") Contact
 					li
-						a(href="./logout", title="Logout") Logout
+						div.btn-group
+							button.btn.btn-primary.dropdown-toggle(type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") #{name}
+								span.caret
+							ul.dropdown-menu
+								li 
+									a(href="#") Action
+								li.divider(role="seperator")
+								li
+									a(href="./logout") Logout
 				div#welcomemsg
-					| Welcome #{name}
+					| Welcome 
+					//#{name}
 			//div.alert.alert-warning(role="alert", style="margin:0;")!= message
 			div!= message
 			div#main_container
@@ -41,3 +49,5 @@ html
 						li
 							a(href="./logout", title="Logout") Logout
 			footer#page_footer Copyright 2016 - #{owner} &copy;
+		script(src="https://code.jquery.com/jquery-3.1.0.min.js", integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=", crossorigin="anonymous")
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
