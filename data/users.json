@@ -2,17 +2,20 @@
 	"users": {
 		"admin": {
 			"password": "test",
-			"role": "admin"
+			"role": "admin",
+			"name": "Admin"
 		},
 
 		"user": {
 			"password": "test",
-			"role": "user"
+			"role": "user",
+			"name": "Test User"
 		},
 		
 		"tushar": {
 			"password": "test",
-			"role": "user"
+			"role": "user",
+			"name": "Tushar Agarwal"
 		}
 	}
 }

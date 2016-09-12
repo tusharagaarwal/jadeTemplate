@@ -22,7 +22,7 @@ function loadPage(contentObject, message, req, res) {
 				if(err) { /*load error page */console.log(Date()+": "+err);}
 				else{
 					content.message = message;
-					content.username = req.session_state.username;
+					content.name = req.session_state.name;
 					content.content = data;	
 					var html = renderFunc(content);
 					res.writeHead("200", {"content-type": "text/html"});
@@ -57,7 +57,7 @@ app.get('/', function(req, res){
 
 app.get('/login', function(req, res){
 	if(req.session_state.username) {
-		loadPage("index", "<div class='alert alert-success alert-dismissible' role='alert' style='margin:0; display:: block;'>Welcome back " + req.session_state.username + "</div>", req, res);
+		loadPage("index", "<div class='alert alert-success alert-dismissible' role='alert' style='margin:0; display:: block;'>Welcome back " + req.session_state.name + "</div>", req, res);
 	}
 	else {
 		loadPage("login", "<div class='alert alert-info alert-dismissible' role='alert' style='margin:0; display:: block;'>Please login to continue</div>", req, res);
@@ -88,7 +88,8 @@ app.post('/login', function(req, res) {
 						// start session and redirect
 						req.session_state.username = username;
 						req.session_state.role = userinfo.role;
-						loadPage("index", "<div class='alert alert-success alert-dismissible' role='alert' style='margin:0; display:: block;'>Welcome back " + req.session_state.username + "</div>", req, res);
+						req.session_state.name = userinfo.name;
+						loadPage("index", "<div class='alert alert-success alert-dismissible' role='alert' style='margin:0; display:: block;'>Welcome back " + req.session_state.name + "</div>", req, res);
 					} else {
 						loadPage("login", "<div class='alert alert-danger alert-dismissible' role='alert' style='margin:0; display:: block;'>Invalid Password</div>", req, res);
 					}
