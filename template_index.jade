@@ -5,14 +5,15 @@ html
 		meta(name="encoding", value="utf-8")
 		meta(name="author", value="tusharagaarwal@gmail.com")
 		title= pagetitle
-		link(rel="stylesheet", href="./style.css", type="text/css")
-		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
-		
+		link(rel="stylesheet", href="/html_content/style.css", type="text/css")
+		link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
+		link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1", crossorigin="anonymous")
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
 	body
 		div#big_wrapper
 			header#top_header
 				h1= applicationname
-			nav#top_menu
+			nav#top_menu(style="visibility: #{nav}; position: #{position};")
 				ul
 					li(class="active")
 						a(href="./", title="Home") Home
@@ -20,19 +21,16 @@ html
 						a(href="./about", title="About") About Us
 					li
 						a(href="./contact", title="Contact") Contact
+					li
+						a(href="./logout", title="Logout") Logout
 				div#welcomemsg
 					| Welcome #{username}
+			//div.alert.alert-warning(role="alert", style="margin:0;")!= message
+			div!= message
 			div#main_container
 				// insert bread crumbs
-				div#main_section
-					each article in articles
-						article
-							hgroup
-								h1= article.title
-								h2= article.subtitle
-							p!= article.content
-							footer= article.author
-				aside#side_menu
+				div#main_section!= content
+				aside#side_menu(style="visibility: #{nav}; position: #{position};")
 					ul
 						li(class="active")
 							a(href='./', title="home") Home
@@ -40,4 +38,6 @@ html
 							a(href="./about", title="About") About Us
 						li
 							a(href="./contact", title="Contact") Contact
+						li
+							a(href="./logout", title="Logout") Logout
 			footer#page_footer Copyright 2016 - #{owner} &copy;
